@@ -21,6 +21,7 @@ public class Car implements Comparable<Car> {
 	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy MM dd HH mm");
 	SimpleDateFormat printDateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm");
 
+	
 	public Car(String kindOfCar, String carNumber, String entryTime) {
 		switch (kindOfCar) {
 		case "c":
