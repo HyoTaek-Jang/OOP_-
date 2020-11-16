@@ -1,7 +1,7 @@
 package ParkingProgram;
 
 public class ElectronicPassengerCar extends PassengerCar {
-	
+	final int MAXCAPACITY = 60;
 	int currentCapacity;
 	
 	public ElectronicPassengerCar(int currentCapacity, String kindOfCar, String carNumber, String entryTime) {

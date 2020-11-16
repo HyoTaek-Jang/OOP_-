@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.Scanner;
 
-public class Car implements Comparable<Car> {
+public abstract class Car implements Comparable<Car> {
 
 	enum kindsOfCar {
 		승용차, 버스, 트럭
@@ -17,9 +17,9 @@ public class Car implements Comparable<Car> {
 	private kindsOfCar kindOfCar;
 	private String carNumber;
 	private long parkingTime; // 단위 : 분
-	Date entryDate;
-	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy MM dd HH mm");
-	SimpleDateFormat printDateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+	private Date entryDate;
+	private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy MM dd HH mm");
+	private SimpleDateFormat printDateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm");
 
 	
 	public Car(String kindOfCar, String carNumber, String entryTime) {
@@ -49,6 +49,7 @@ public class Car implements Comparable<Car> {
 	public long calculateParkingTime() {
 		Date exitDate = null;
 		try {
+			System.out.println("출차시간을 입력하세요!");
 			exitDate = dateFormat.parse(scanner.nextLine());
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
@@ -59,6 +60,8 @@ public class Car implements Comparable<Car> {
 		return parkingTime;
 	}
 
+	abstract int calculateParkingFee();
+	
 	@Override
 	public int compareTo(Car car1) {
 
@@ -76,5 +79,9 @@ public class Car implements Comparable<Car> {
 
 	public String getCarNumber() {
 		return carNumber;
+	}
+	
+	public long getParkingTime() {
+		return parkingTime;
 	}
 }

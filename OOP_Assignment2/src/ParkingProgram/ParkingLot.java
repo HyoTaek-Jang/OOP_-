@@ -22,14 +22,12 @@ public class ParkingLot {
 	}
 
 	void exitCar() {
-		System.out.println("출차번호 대시오");
+		System.out.println("출차할 차량번호를 입력하세요!");
 		String searchCarNumber = scanner.nextLine();
 		int indexOfCar = keyOfParkingLot.indexOf(searchCarNumber);
 		Car curCar = currentParkingLot.get(indexOfCar);
-
-		System.out.println("curCar classname : " + curCar.getClass().getTypeName());
-
 		curCar.calculateParkingTime();
+		curCar.calculateParkingFee();
 
 		System.out.println("exitCar");
 	}
