@@ -13,7 +13,6 @@ public class Test {
 		ParkingLot parkingLot = new ParkingLot();
 		CreateCar createCar = new CreateCar();
 		int checkNum;
-
 		System.out.println("주차장 관리 프로그램이 실행됐습니다.");
 		parkingLot.setParkingLotSize();
 

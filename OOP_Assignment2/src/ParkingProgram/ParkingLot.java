@@ -9,9 +9,20 @@ public class ParkingLot {
 	private ArrayList<Car> currentParkingLot = new ArrayList<>();
 	private ArrayList<String> keyOfParkingLot = new ArrayList<>();
 	Scanner scanner = new Scanner(System.in);
-	int income;
+	private int income;
 	private int parkingLotSize = 0;
 	private int currentCars = 0;
+	
+	void printExitInformation(int standardTime, int parkingFee) {
+		int hour = 0, min = 0;
+		if(standardTime/60!=0) {
+			hour = standardTime/60;
+			min = standardTime%60;
+		}
+		
+		System.out.println("주차시간은 "+hour+"시간 "+min+"분입니다.");
+		System.out.println("주차요금은 "+parkingFee+"원입니다.");
+	}
 
 	void entryCar(Car curCar) {
 		if (!(parkingLotSize > currentCars))
@@ -27,8 +38,8 @@ public class ParkingLot {
 		int indexOfCar = keyOfParkingLot.indexOf(searchCarNumber);
 		Car curCar = currentParkingLot.get(indexOfCar);
 		curCar.calculateParkingTime();
-		curCar.calculateParkingFee();
-
+		addIncome(curCar.calculateParkingFee());
+		printExitInformation(curCar.calculateStandardTime(), curCar.calculateParkingFee());
 		System.out.println("exitCar");
 	}
 
@@ -39,6 +50,10 @@ public class ParkingLot {
 			System.out.println(c);
 
 		}
+	}
+	
+	void addIncome(int parkingFee) {
+		income += parkingFee;
 	}
 
 	void showIncome() {

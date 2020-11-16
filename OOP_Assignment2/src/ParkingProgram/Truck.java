@@ -2,7 +2,6 @@ package ParkingProgram;
 
 public class Truck extends Car {
 
-	private int parkingTime = (int) this.getParkingTime();
 	private int standardParkingTime = 0;
 	private int parkingFee = 0;
 	private kindsOfSize mySize;
@@ -24,14 +23,6 @@ public class Truck extends Car {
 
 	@Override
 	public int calculateParkingFee() {
-		if (parkingTime < 60)
-			standardParkingTime = 60;
-		else if (parkingTime % 60 == 0)
-			standardParkingTime = parkingTime;
-		else
-			standardParkingTime = ((parkingTime / 60) + 1) * 60;
-
-		System.out.println("주차시간은 " + parkingTime / 60 + "시간입니다.");
 
 		while (standardParkingTime > 0) {
 			standardParkingTime -= 60;
@@ -47,8 +38,21 @@ public class Truck extends Car {
 
 			}
 		}
-		System.out.println("주차요금은 " + parkingFee + "원입니다.");
 		return parkingFee;
+	}
+
+	@Override
+	public int calculateStandardTime() {
+		// TODO Auto-generated method stub
+		int parkingTime = (int) this.getParkingTime();
+		if (parkingTime < 60)
+			standardParkingTime = 60;
+		else if (parkingTime % 60 == 0)
+			standardParkingTime = parkingTime;
+		else
+			standardParkingTime = ((parkingTime / 60) + 1) * 60;
+		return standardParkingTime;
+
 	}
 
 }

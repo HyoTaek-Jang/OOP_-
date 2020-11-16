@@ -56,11 +56,13 @@ public abstract class Car implements Comparable<Car> {
 			e.printStackTrace();
 		}
 		parkingTime = (exitDate.getTime() - entryDate.getTime()) / 60 / 1000; // 차이를 분으로 만듬.
-		System.out.println(parkingTime);
+
 		return parkingTime;
 	}
 
 	abstract int calculateParkingFee();
+	abstract int calculateStandardTime();
+
 	
 	@Override
 	public int compareTo(Car car1) {

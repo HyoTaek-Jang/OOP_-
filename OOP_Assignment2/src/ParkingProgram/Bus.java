@@ -4,7 +4,6 @@ import ParkingProgram.Truck.kindsOfSize;
 
 public class Bus extends Car {
 
-	private int parkingTime = (int) this.getParkingTime();
 	private int standardParkingTime = 0;
 	private int parkingFee = 0;
 	private kindsOfSize mySize;
@@ -26,16 +25,8 @@ public class Bus extends Car {
 
 	@Override
 	public int calculateParkingFee() {
-		if (parkingTime < 60)
-			parkingTime = 60;
-		else if (parkingTime % 30 == 0)
-			standardParkingTime = parkingTime;
-		else
-			standardParkingTime = ((parkingTime / 30) + 1) * 30;
 
-		System.out.println("주차시간은 " + parkingTime / 60 + "시간 " + parkingTime % 30 + "분입니다.");
-
-		parkingTime -= 60;
+		standardParkingTime -= 60;
 		switch (mySize) {
 		case 대형:
 			parkingFee += 4000;
@@ -62,9 +53,23 @@ public class Bus extends Car {
 			}
 		}
 
-		System.out.println("주차요금은 " + parkingFee + "원입니다.");
 
 		return parkingFee;
+	}
+
+	@Override
+	public int calculateStandardTime() {
+		int parkingTime = (int) this.getParkingTime();
+		// TODO Auto-generated method stub
+		if (parkingTime < 60)
+			parkingTime = 60;
+		else if (parkingTime % 30 == 0)
+			standardParkingTime = parkingTime;
+		else
+			standardParkingTime = ((parkingTime / 30) + 1) * 30;
+		
+		return standardParkingTime;
+		
 	}
 
 	// 사이즈에 따라 계산 달리.
