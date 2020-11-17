@@ -11,9 +11,9 @@ public class PassengerCar extends Car {
 
 	@Override
 	public int calculateParkingFee() {
-
 		standardParkingTime -= 30;
 		parkingFee += 1000;
+		
 		while (standardParkingTime > 0) {
 			standardParkingTime -= 10;
 			parkingFee += 500;
@@ -24,6 +24,7 @@ public class PassengerCar extends Car {
 	@Override
 	public int calculateStandardTime() {
 		int parkingTime = (int) this.getParkingTime();
+		
 		if (parkingTime < 30)
 			standardParkingTime = 30;
 		else if (parkingTime % 10 == 0)
@@ -33,8 +34,4 @@ public class PassengerCar extends Car {
 		return standardParkingTime;
 	}
 
-//	@Override
-//	public String toString() {
-//		return "½Â¿ëÂ÷" + super.toString();
-//	}
 }

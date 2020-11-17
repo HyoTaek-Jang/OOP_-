@@ -1,5 +1,6 @@
 package ParkingProgram;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
@@ -16,47 +17,42 @@ public class ParkingLot {
 
 	void printExitInformation(int standardTime, int parkingFee) {
 		int hour = 0, min = 0;
-		if (standardTime / 60 != 0) {
+		
+		if (standardTime / 60 != 0)
 			hour = standardTime / 60;
-			min = standardTime % 60;
-		}
-
+		min = standardTime % 60;
+		
 		System.out.println("주차시간은 " + hour + "시간 " + min + "분입니다.");
 		System.out.println("주차요금은 " + parkingFee + "원입니다.");
 	}
 
-	void exitElectronic(Car curCar, int standardTime, int parkingFee) {
-		ElectronicPassengerCar CarE = (ElectronicPassengerCar) curCar;
-		int chargingFee = CarE.calculateChargingFee(curCar.calculateParkingTime());
-		int hour = 0, min = 0;
-		if (standardTime / 60 != 0) {
-			hour = standardTime / 60;
-			min = standardTime % 60;
-		}
-
-		System.out.println("주차시간은 " + hour + "시간 " + min + "분입니다.");
-		System.out.println("주차요금은 " + (parkingFee + chargingFee) + "원입니다.");
-	}
-
-	void entryCar() {
-		if (!(parkingLotSize > currentCars))
-			System.out.println("오류");
+	void entryCar(){
 		Car curCar = createCar.create();
+		
+		if (!(parkingLotSize > currentCars))
+			throw new RuntimeException("오류 : 주차장에 자리가 없습니다.");
+		
 		currentParkingLot.add(curCar);
 		keyOfParkingLot.add(curCar.getCarNumber());
 		currentCars++;
 	}
 
-	void exitCar() {
+	void exitCar() throws ParseException {
 		int totalFee = 0;
 		long parkingTime;
 		int standardParkingTime;
+
 		System.out.println("출차할 차량번호를 입력하세요!");
 		String searchCarNumber = scanner.nextLine();
+
 		int indexOfCar = keyOfParkingLot.indexOf(searchCarNumber);
+		if (indexOfCar == -1)
+			throw new RuntimeException("오류 : 출차번호가 존재하지 않습니다.");
 		Car curCar = currentParkingLot.get(indexOfCar);
+		
 		parkingTime = curCar.calculateParkingTime();
 		standardParkingTime = curCar.calculateStandardTime();
+
 		if (curCar.getClass().getName().equals("ParkingProgram.ElectronicPassengerCar")) {
 			ElectronicPassengerCar carE = (ElectronicPassengerCar) curCar;
 			totalFee = carE.calculateParkingFee() + carE.calculateChargingFee(parkingTime);
@@ -64,20 +60,19 @@ public class ParkingLot {
 			totalFee = curCar.calculateParkingFee();
 		}
 
-		keyOfParkingLot.remove(indexOfCar);
-		currentParkingLot.remove(indexOfCar);
-
 		addIncome(totalFee);
 		printExitInformation(standardParkingTime, totalFee);
 
+		keyOfParkingLot.remove(indexOfCar);
+		currentParkingLot.remove(indexOfCar);
 	}
 
 	void showParkingLot() {
 		ArrayList<Car> cloneParkingLot = (ArrayList<Car>) currentParkingLot.clone();
+		
 		Collections.sort(cloneParkingLot);
 		for (Car c : cloneParkingLot) {
 			System.out.println(c);
-
 		}
 	}
 
@@ -86,7 +81,7 @@ public class ParkingLot {
 	}
 
 	void showIncome() {
-		System.out.println("총 수입은 "+income+"입니다");
+		System.out.println("총 수입은 " + income + "원입니다");
 	}
 
 	void setParkingLotSize() {

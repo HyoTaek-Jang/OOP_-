@@ -2,9 +2,7 @@ package ParkingProgram;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Comparator;
 import java.util.Date;
-import java.util.Locale;
 import java.util.Scanner;
 
 public abstract class Car implements Comparable<Car> {
@@ -21,7 +19,6 @@ public abstract class Car implements Comparable<Car> {
 	private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy MM dd HH mm");
 	private SimpleDateFormat printDateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm");
 
-	
 	public Car(String kindOfCar, String carNumber, String entryTime) {
 		switch (kindOfCar) {
 		case "c":
@@ -46,24 +43,25 @@ public abstract class Car implements Comparable<Car> {
 
 	}
 
-	public long calculateParkingTime() {
-		Date exitDate = null;
-		try {
-			System.out.println("출차시간을 입력하세요!");
-			exitDate = dateFormat.parse(scanner.nextLine());
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		parkingTime = (exitDate.getTime() - entryDate.getTime()) / 60 / 1000; // 차이를 분으로 만듬.
-
-		return parkingTime;
-	}
-
 	abstract int calculateParkingFee();
+
 	abstract int calculateStandardTime();
 
-	
+	public long calculateParkingTime() throws ParseException {
+		Date exitDate = null;
+
+			System.out.println("출차시간을 입력하세요!");
+			exitDate = dateFormat.parse(scanner.nextLine());
+
+			parkingTime = (exitDate.getTime() - entryDate.getTime()) / 60 / 1000; // 차이를 분으로 만듬.
+
+			if (parkingTime < 0)
+				throw new RuntimeException("오류 : 출차시간이 입차시간보다 빠릅니다.");
+
+			return parkingTime;
+		
+	}
+
 	@Override
 	public int compareTo(Car car1) {
 
@@ -82,7 +80,7 @@ public abstract class Car implements Comparable<Car> {
 	public String getCarNumber() {
 		return carNumber;
 	}
-	
+
 	public long getParkingTime() {
 		return parkingTime;
 	}

@@ -1,5 +1,6 @@
 package ParkingProgram;
 
+import java.text.ParseException;
 import java.util.Scanner;
 
 public class Test {
@@ -12,6 +13,7 @@ public class Test {
 		Scanner scanner = new Scanner(System.in);
 		ParkingLot parkingLot = new ParkingLot();
 		int checkNum;
+		
 		System.out.println("주차장 관리 프로그램이 실행됐습니다.");
 		parkingLot.setParkingLotSize();
 
@@ -28,10 +30,20 @@ public class Test {
 
 			switch (checkNum) {
 			case 1:
-				parkingLot.entryCar();
-				break;
+				try {
+					parkingLot.entryCar();
+				} catch(RuntimeException e) {
+					System.out.println(e.getMessage());
+				}
+				break;					
 			case 2:
-				parkingLot.exitCar();
+				try {
+					parkingLot.exitCar();					
+				} catch(RuntimeException e) {
+					System.out.println(e.getMessage());
+				} catch(ParseException e) {
+					System.out.println("오류 : 날짜 형식에 맞지 않은 입력 값입니다.");
+				}
 				break;
 			case 3:
 				parkingLot.showParkingLot();

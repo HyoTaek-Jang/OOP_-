@@ -43,8 +43,8 @@ public class Truck extends Car {
 
 	@Override
 	public int calculateStandardTime() {
-		// TODO Auto-generated method stub
 		int parkingTime = (int) this.getParkingTime();
+
 		if (parkingTime < 60)
 			standardParkingTime = 60;
 		else if (parkingTime % 60 == 0)

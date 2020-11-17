@@ -9,7 +9,7 @@ public class CreateCar {
 	private String awnser;
 	Scanner scanner = new Scanner(System.in);
 
-	public Car create() {
+	public Car create(){
 		System.out.println("차량 종류 및 용량을 입력하세요! 승용차(c), 트럭(t), 버스(b)");
 		awnser = scanner.nextLine();
 		String processedAwnser[] = awnser.split(" ");
@@ -17,12 +17,20 @@ public class CreateCar {
 		String kindOfCar = processedAwnser[0];
 		int capacity = Integer.parseInt(processedAwnser[1]);
 
-		if (!(kindOfCar.equals("c") || kindOfCar.equals("b") || kindOfCar.equals("t"))) {
-			System.out.println("에러");
+		if (!((kindOfCar.equals("c") || kindOfCar.equals("b") || kindOfCar.equals("t"))&& (capacity > 0 || capacity == 0))) {
+			throw new RuntimeException("오류 : 차량 종류 및 용량이 옳지 않습니다.");
 		}
 
 		System.out.println("차량 번호를 입력하세요!(4자리 숫자)");
 		carNumber = scanner.nextLine();
+		
+		if (carNumber.length() != 4)
+			throw new RuntimeException("오류 : 차량 번호가 올바르지 않습니다");
+		
+		for (int i = 0; i < 4; i++) {
+			if (!Character.isDigit(carNumber.charAt(i)))
+				throw new RuntimeException("오류 : 차량 번호가 올바르지 않습니다");
+		}
 
 		System.out.println("입차시간을 입력하세요! (년 월 일 시 분)");
 		entryTime = scanner.nextLine();
