@@ -11,7 +11,6 @@ public class Test {
 	static void run() {
 		Scanner scanner = new Scanner(System.in);
 		ParkingLot parkingLot = new ParkingLot();
-		CreateCar createCar = new CreateCar();
 		int checkNum;
 		System.out.println("주차장 관리 프로그램이 실행됐습니다.");
 		parkingLot.setParkingLotSize();
@@ -29,8 +28,7 @@ public class Test {
 
 			switch (checkNum) {
 			case 1:
-				Car curCar = createCar.create();
-				parkingLot.entryCar(curCar);
+				parkingLot.entryCar();
 				break;
 			case 2:
 				parkingLot.exitCar();
