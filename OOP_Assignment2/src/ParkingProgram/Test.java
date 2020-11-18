@@ -13,7 +13,7 @@ public class Test {
 		Scanner scanner = new Scanner(System.in);
 		ParkingLot parkingLot = new ParkingLot();
 		int checkNum;
-		
+
 		System.out.println("주차장 관리 프로그램이 실행됐습니다.");
 		parkingLot.setParkingLotSize();
 
@@ -32,17 +32,17 @@ public class Test {
 			case 1:
 				try {
 					parkingLot.entryCar();
-				} catch(RuntimeException e) {
+				} catch (Exception e) {
 					System.out.println(e.getMessage());
 				}
-				break;					
+				break;
 			case 2:
 				try {
-					parkingLot.exitCar();					
-				} catch(RuntimeException e) {
-					System.out.println(e.getMessage());
-				} catch(ParseException e) {
+					parkingLot.exitCar();
+				} catch (ParseException e) {
 					System.out.println("오류 : 날짜 형식에 맞지 않은 입력 값입니다.");
+				} catch (Exception e) {
+					System.out.println(e.getMessage());
 				}
 				break;
 			case 3:

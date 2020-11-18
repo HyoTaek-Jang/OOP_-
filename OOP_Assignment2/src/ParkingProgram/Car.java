@@ -56,7 +56,8 @@ public abstract class Car implements Comparable<Car> {
 			parkingTime = (exitDate.getTime() - entryDate.getTime()) / 60 / 1000; // 차이를 분으로 만듬.
 
 			if (parkingTime < 0)
-				throw new RuntimeException("오류 : 출차시간이 입차시간보다 빠릅니다.");
+				throw new ArithmeticException("오류 : 출차시간이 입차시간보다 빠릅니다.");
+			// 음수가 나오면 안되는데 나와서 산울 익셉션
 
 			return parkingTime;
 		

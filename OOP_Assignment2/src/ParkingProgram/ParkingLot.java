@@ -12,7 +12,6 @@ public class ParkingLot {
 	Scanner scanner = new Scanner(System.in);
 	private int income;
 	private int parkingLotSize = 0;
-	private int currentCars = 0;
 	private CreateCar createCar = new CreateCar();
 
 	void printExitInformation(int standardTime, int parkingFee) {
@@ -29,12 +28,12 @@ public class ParkingLot {
 	void entryCar(){
 		Car curCar = createCar.create();
 		
-		if (!(parkingLotSize > currentCars))
-			throw new RuntimeException("오류 : 주차장에 자리가 없습니다.");
+		if (!(parkingLotSize > currentParkingLot.size()))
+			throw new IndexOutOfBoundsException("오류 : 주차장에 자리가 없습니다.");
+		// 여기서 차량을 더 추가하면 내가 정한 주차장의 크기를 넘어감으로 아웃오브바운드 익셉션으로 함.
 		
 		currentParkingLot.add(curCar);
 		keyOfParkingLot.add(curCar.getCarNumber());
-		currentCars++;
 	}
 
 	void exitCar() throws ParseException {
@@ -47,7 +46,8 @@ public class ParkingLot {
 
 		int indexOfCar = keyOfParkingLot.indexOf(searchCarNumber);
 		if (indexOfCar == -1)
-			throw new RuntimeException("오류 : 출차번호가 존재하지 않습니다.");
+			throw new IllegalArgumentException("오류 : 출차번호가 존재하지 않습니다.");
+		// 인덱스 찾아야하는데 잘못된 매개변수를 넘겨줬으니 일리걸아규먼트로 ㅇㅇ
 		Car curCar = currentParkingLot.get(indexOfCar);
 		
 		parkingTime = curCar.calculateParkingTime();
