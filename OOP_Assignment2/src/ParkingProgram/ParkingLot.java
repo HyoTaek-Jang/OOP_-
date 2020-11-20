@@ -26,10 +26,11 @@ public class ParkingLot {
 	}
 
 	public void entryCar() {
-		Car curCar = createCar.create();
-
 		if (!(parkingLotSize > currentParkingLot.size()))
 			throw new IndexOutOfBoundsException("오류 : 주차장에 자리가 없습니다.");
+
+		Car curCar = createCar.create();
+
 
 		currentParkingLot.add(curCar);
 		keyOfParkingLot.add(curCar.getCarNumber());
