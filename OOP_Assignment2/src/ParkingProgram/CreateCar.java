@@ -20,7 +20,7 @@ public class CreateCar {
 
 		if (!((kindOfCar.equals("c") || kindOfCar.equals("b") || kindOfCar.equals("t"))&& (capacity > 0 || capacity == 0))) {
 			throw new InputMismatchException("오류 : 차량 종류 및 용량이 옳지 않습니다.");
-		} //스캐너로 받은 인풋이 형식과 맞지 않으니 인풋미스매치로 함.
+		} 
 
 		System.out.println("차량 번호를 입력하세요!(4자리 숫자)");
 		carNumber = scanner.nextLine();

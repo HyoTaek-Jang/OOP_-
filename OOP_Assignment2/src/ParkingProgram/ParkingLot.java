@@ -14,29 +14,28 @@ public class ParkingLot {
 	private int parkingLotSize = 0;
 	private CreateCar createCar = new CreateCar();
 
-	void printExitInformation(int standardTime, int parkingFee) {
+	public void printExitInformation(int standardTime, int parkingFee) {
 		int hour = 0, min = 0;
-		
+
 		if (standardTime / 60 != 0)
 			hour = standardTime / 60;
 		min = standardTime % 60;
-		
+
 		System.out.println("주차시간은 " + hour + "시간 " + min + "분입니다.");
 		System.out.println("주차요금은 " + parkingFee + "원입니다.");
 	}
 
-	void entryCar(){
+	public void entryCar() {
 		Car curCar = createCar.create();
-		
+
 		if (!(parkingLotSize > currentParkingLot.size()))
 			throw new IndexOutOfBoundsException("오류 : 주차장에 자리가 없습니다.");
-		// 여기서 차량을 더 추가하면 내가 정한 주차장의 크기를 넘어감으로 아웃오브바운드 익셉션으로 함.
-		
+
 		currentParkingLot.add(curCar);
 		keyOfParkingLot.add(curCar.getCarNumber());
 	}
 
-	void exitCar() throws ParseException {
+	public void exitCar() throws ParseException {
 		int totalFee = 0;
 		long parkingTime;
 		int standardParkingTime;
@@ -47,9 +46,8 @@ public class ParkingLot {
 		int indexOfCar = keyOfParkingLot.indexOf(searchCarNumber);
 		if (indexOfCar == -1)
 			throw new IllegalArgumentException("오류 : 출차번호가 존재하지 않습니다.");
-		// 인덱스 찾아야하는데 잘못된 매개변수를 넘겨줬으니 일리걸아규먼트로 ㅇㅇ
 		Car curCar = currentParkingLot.get(indexOfCar);
-		
+
 		parkingTime = curCar.calculateParkingTime();
 		standardParkingTime = curCar.calculateStandardTime();
 
@@ -67,24 +65,28 @@ public class ParkingLot {
 		currentParkingLot.remove(indexOfCar);
 	}
 
-	void showParkingLot() {
+	public void showParkingLot() {
 		ArrayList<Car> cloneParkingLot = (ArrayList<Car>) currentParkingLot.clone();
-		
-		Collections.sort(cloneParkingLot);
-		for (Car c : cloneParkingLot) {
-			System.out.println(c);
+
+		if (!cloneParkingLot.isEmpty()) {
+			Collections.sort(cloneParkingLot);
+			for (Car c : cloneParkingLot) {
+				System.out.println(c);
+			}
 		}
+		else
+			System.out.println("주차장이 비어있습니다.");
 	}
 
-	void addIncome(int parkingFee) {
+	public void addIncome(int parkingFee) {
 		income += parkingFee;
 	}
 
-	void showIncome() {
+	public void showIncome() {
 		System.out.println("총 수입은 " + income + "원입니다");
 	}
 
-	void setParkingLotSize() {
+	public void setParkingLotSize() {
 		System.out.printf("주차장의 주차 최대 차량 수를 입력해주세요. : ");
 		parkingLotSize = scanner.nextInt();
 		scanner.nextLine();
