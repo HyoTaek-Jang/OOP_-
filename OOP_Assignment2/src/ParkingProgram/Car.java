@@ -14,12 +14,16 @@ public abstract class Car implements Comparable<Car> {
 	Scanner scanner = new Scanner(System.in);
 	private kindsOfCar kindOfCar;
 	private String carNumber;
-	private long parkingTime; // 단위 : 분
+	private long parkingTime;
 	private Date entryDate;
 	private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy MM dd HH mm");
 	private SimpleDateFormat printDateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm");
-	
-	public Car(String kindOfCar, String carNumber, String entryTime) {
+
+	public abstract int calculateParkingFee();
+
+	public abstract int calculateStandardTime();
+
+	public Car(String kindOfCar, String carNumber, String entryTime) throws ParseException {
 		switch (kindOfCar) {
 		case "c":
 			this.kindOfCar = kindsOfCar.승용차;
@@ -33,19 +37,11 @@ public abstract class Car implements Comparable<Car> {
 		}
 
 		this.carNumber = carNumber;
-		try {
-			dateFormat.setLenient(false);
-			entryDate = dateFormat.parse(entryTime);
-		} catch (ParseException parseException) {
-			System.out.printf("%nException: %s%n", parseException);
-			System.out.println("오류 : 날짜 형식에 맞지 않은 입력 값입니다.");
-		}
+		
+		dateFormat.setLenient(false); // 양식에 다른 입력을 받으면 Exception 발생.
+		entryDate = dateFormat.parse(entryTime);
 
 	}
-
-	public abstract int calculateParkingFee();
-
-	public abstract int calculateStandardTime();
 
 	public long calculateParkingTime() throws ParseException {
 		Date exitDate = null;

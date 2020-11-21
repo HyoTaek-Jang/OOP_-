@@ -1,5 +1,7 @@
 package ParkingProgram;
 
+import java.text.ParseException;
+
 public class Bus extends Car {
 
 	private int standardParkingTime = 0;
@@ -10,7 +12,7 @@ public class Bus extends Car {
 		대형, 중형, 소형
 	}
 
-	public Bus(int capacity, String kindOfCar, String carNumber, String entryTime) {
+	public Bus(int capacity, String kindOfCar, String carNumber, String entryTime) throws ParseException {
 		super(kindOfCar, carNumber, entryTime);
 
 		if (capacity < 24)
@@ -19,6 +21,20 @@ public class Bus extends Car {
 			mySize = kindsOfSize.중형;
 		else
 			mySize = kindsOfSize.대형;
+	}
+
+	@Override
+	public int calculateStandardTime() {
+		int parkingTime = (int) this.getParkingTime();
+
+		if (parkingTime < 60)
+			parkingTime = 60;
+		else if (parkingTime % 30 == 0)
+			standardParkingTime = parkingTime;
+		else
+			standardParkingTime = ((parkingTime / 30) + 1) * 30;
+		return standardParkingTime;
+
 	}
 
 	@Override
@@ -51,20 +67,6 @@ public class Bus extends Car {
 		}
 
 		return parkingFee;
-	}
-
-	@Override
-	public int calculateStandardTime() {
-		int parkingTime = (int) this.getParkingTime();
-
-		if (parkingTime < 60)
-			parkingTime = 60;
-		else if (parkingTime % 30 == 0)
-			standardParkingTime = parkingTime;
-		else
-			standardParkingTime = ((parkingTime / 30) + 1) * 30;
-		return standardParkingTime;
-
 	}
 
 }

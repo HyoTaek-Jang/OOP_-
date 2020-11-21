@@ -42,7 +42,11 @@ public class Test {
 					System.out.printf("%nException: %s%n", indexOutOfBoundsException);
 				} catch (InputMismatchException inputMismatchException) {
 					System.out.printf("%nException: %s%n", inputMismatchException);
+				} catch (ParseException parseException) {
+					System.out.printf("%nException: %s%n", parseException);
+					System.out.println("오류 : 날짜 형식에 맞지 않은 입력 값입니다.");
 				}
+
 				break;
 			case 2:
 				try {

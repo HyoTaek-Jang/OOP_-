@@ -1,5 +1,6 @@
 package ParkingProgram;
 
+import java.text.ParseException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -10,7 +11,7 @@ public class CreateCar {
 	private String awnser;
 	Scanner scanner = new Scanner(System.in);
 
-	public Car create(){
+	public Car create() throws ParseException{
 		System.out.println("차량 종류 및 용량을 입력하세요! 승용차(c), 트럭(t), 버스(b)");
 		awnser = scanner.nextLine();
 		String processedAwnser[] = awnser.split(" ");
