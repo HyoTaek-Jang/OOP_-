@@ -26,7 +26,8 @@ public class Test {
 		int checkNum;
 
 		System.out.println("주차장 관리 프로그램이 실행됐습니다.");
-		parkingLot.setParkingLotSize();
+		System.out.println("주차장은 최대 30대 주차 가능합니다.");
+		//parkingLot.setParkingLotSize();
 
 		while (true) {
 

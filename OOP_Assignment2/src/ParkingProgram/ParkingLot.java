@@ -13,7 +13,7 @@ public class ParkingLot {
 	DecimalFormat priceFormat = new DecimalFormat("#,###");
 	Scanner scanner = new Scanner(System.in);
 	private int income;
-	private int parkingLotSize = 0;
+	private int parkingLotSize = 30;
 	private CreateCar createCar = new CreateCar();
 
 	public void setParkingLotSize() {
