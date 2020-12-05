@@ -2,14 +2,16 @@ package ParkingLotProg_GUI;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 
 import javax.swing.JPanel;
 
 public class EntryFrame extends BasicFrame {
-
+	private JPanel basicPanel = makeBasicPanel();
 	public EntryFrame() {
 		super();
 
+		
 		JPanel titlePanel = new JPanel();
 		JPanel contentPanel = new JPanel();
 		JPanel inputPanel = new JPanel();
@@ -29,12 +31,17 @@ public class EntryFrame extends BasicFrame {
 		boxPanel.add(makeLabel("승용차(c), 트럭(t), 버스(b)", 35));
 
 		inputPanel.add(boxPanel);
-		inputPanel.add(makeTextField("ex) c 10", 5, 35));
-		inputPanel.add(makeButton("입력", 35));
+//		inputPanel.add(makeTextField("ex) c 10", 5, 35));
+//		inputPanel.add(makeButton("입력", 35));
 
-		add(titlePanel);
-		add(contentPanel);
-		add(inputPanel);
+		basicPanel.add(titlePanel);
+		basicPanel.add(contentPanel);
+		basicPanel.add(inputPanel);
+	}
+
+	public Component getPanel() {
+		// TODO Auto-generated method stub
+		return basicPanel;
 	}
 
 }
