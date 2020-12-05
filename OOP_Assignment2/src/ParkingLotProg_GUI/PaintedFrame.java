@@ -22,3 +22,6 @@ public class PaintedFrame extends JFrame {
 
 	}
 }
+
+
+// 현재 사용 안함.

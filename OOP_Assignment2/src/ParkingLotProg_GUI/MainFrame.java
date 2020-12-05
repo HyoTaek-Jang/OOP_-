@@ -8,17 +8,17 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class MainFrame extends BasicFrame {
-	
+
 	private EntryFrame entryFrame = new EntryFrame();
+
 	public MainFrame() {
 		super();
 		setLayout(new GridLayout(3, 1));
-		
 
 		JPanel titlePanel = makePanel();
 		JPanel contentPanel = makePanel();
 		JPanel inputPanel = makePanel();
-		
+
 		JPanel boxPanel = new JPanel();
 		JPanel boxPanel_2 = new JPanel();
 
@@ -27,23 +27,22 @@ public class MainFrame extends BasicFrame {
 		boxPanel_2.add(makeLabel("1.입차 / 2.출차 / 3.주차장보기 / 4.수입보기 / 5.프로그램 종료", 35));
 		boxPanel_2.add(makeLabel("최대 30대까지 수용 가능한 주차장입니다.", 20));
 		contentPanel.add(boxPanel_2);
-		
+
 		JTextField inputField = makeTextField("ex) 1", 5, 35, new ActionListener() {
-			
+
 			public void actionPerformed(ActionEvent e) {
-				JTextField t = (JTextField)e.getSource();
+				JTextField t = (JTextField) e.getSource();
 				String input = t.getText();
-				System.out.println(input);
 				moveFrame(input);
 			}
-			});
+		});
 		boxPanel.add(makeLabel("원하는 메뉴를 입력하세요.", 35));
 		boxPanel.add(inputField);
 		boxPanel.add(makeButton("입력", 35, new ActionListener() {
-			
+
 			public void actionPerformed(ActionEvent e) {
 				String input = inputField.getText();
-				System.out.println(input);
+				moveFrame(input);
 			}
 		}));
 		inputPanel.add(boxPanel);
@@ -58,27 +57,14 @@ public class MainFrame extends BasicFrame {
 		add(inputPanel);
 
 		setVisible(true);
-		//paintPanel();
 
 	}
-	
-	
+
 	public void moveFrame(String input) {
-		switch(input) {
+		switch (input) {
 		case "1":
 			entryFrame.setVisible(true);
-			
-//			getContentPane().removeAll();
-//			getContentPane().add(entryFrame.getPanel());
-//			revalidate();
-//			repaint();
 		}
 	}
 
-//	public void paintPanel() {
-//		getContentPane().add(basicPanel);
-//		revalidate();
-//		repaint();
-//	}
-//	
 }
