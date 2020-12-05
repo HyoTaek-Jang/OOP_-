@@ -17,7 +17,8 @@ public class BasicFrame extends JFrame {
 	private JLabel textLabel;
 	private JTextField textField;
 	private JButton button;
-
+	private JPanel panel;
+	
 	public BasicFrame() {
 		setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
 		setLayout(new GridLayout(3, 1));
@@ -25,7 +26,7 @@ public class BasicFrame extends JFrame {
 
 	public JLabel makeLabel(String text, int fontSize) {
 
-		textLabel = new JLabel(text);
+		textLabel = new JLabel(text, JLabel.CENTER);
 		textLabel.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, fontSize));
 
 		return textLabel;
@@ -38,14 +39,17 @@ public class BasicFrame extends JFrame {
 		return textField;
 	}
 	
-	public JPanel makePanel() {
-		return new JPanel();
-	}
 	
 	public JButton makeButton(String text, int fontSize) {
 		button = new JButton(text);
 		button.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, fontSize));
 		return button;
+	}
+	
+	public JPanel makePanel() {
+		panel = new JPanel();
+		panel.setLayout(new BorderLayout());
+		return panel;
 	}
 
 }
