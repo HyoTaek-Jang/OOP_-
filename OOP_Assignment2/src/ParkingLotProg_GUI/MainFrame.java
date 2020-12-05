@@ -1,17 +1,19 @@
 package ParkingLotProg_GUI;
 
 import java.awt.Color;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class MainFrame extends BasicFrame {
+	
 	private EntryFrame entryFrame = new EntryFrame();
 	public MainFrame() {
 		super();
+		setLayout(new GridLayout(3, 1));
 		
-		JPanel basicPanel = makeBasicPanel();
 
 		JPanel titlePanel = makePanel();
 		JPanel contentPanel = makePanel();
@@ -51,25 +53,32 @@ public class MainFrame extends BasicFrame {
 		contentPanel.setBackground(Color.BLUE);
 		titlePanel.setBackground(Color.BLACK);
 
-		basicPanel.add(titlePanel);
-		basicPanel.add(contentPanel);
-		basicPanel.add(inputPanel);
-		
-		getContentPane().add(basicPanel);
-	//	add(basicPanel);
+		add(titlePanel);
+		add(contentPanel);
+		add(inputPanel);
+
+		setVisible(true);
+		//paintPanel();
 
 	}
+	
 	
 	public void moveFrame(String input) {
 		switch(input) {
 		case "1":
-			getContentPane().removeAll();
-			getContentPane().add(entryFrame.getPanel());
-			revalidate();
-			repaint();
-//			this.setVisible(false);
-//			entryFrame.setVisible(true);
+			entryFrame.setVisible(true);
+			
+//			getContentPane().removeAll();
+//			getContentPane().add(entryFrame.getPanel());
+//			revalidate();
+//			repaint();
 		}
 	}
-	
+
+//	public void paintPanel() {
+//		getContentPane().add(basicPanel);
+//		revalidate();
+//		repaint();
+//	}
+//	
 }

@@ -8,10 +8,10 @@ import javax.swing.JPanel;
 
 public class EntryFrame extends BasicFrame {
 	private JPanel basicPanel = makeBasicPanel();
+
 	public EntryFrame() {
 		super();
 
-		
 		JPanel titlePanel = new JPanel();
 		JPanel contentPanel = new JPanel();
 		JPanel inputPanel = new JPanel();
@@ -37,6 +37,10 @@ public class EntryFrame extends BasicFrame {
 		basicPanel.add(titlePanel);
 		basicPanel.add(contentPanel);
 		basicPanel.add(inputPanel);
+		
+		getContentPane().add(basicPanel);
+		revalidate();
+		repaint();
 	}
 
 	public Component getPanel() {

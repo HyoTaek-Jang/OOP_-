@@ -13,27 +13,23 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 public class BasicFrame extends JFrame {
-	private static final int DEFAULT_WIDTH = 1280;
-	private static final int DEFAULT_HEIGHT = 720;
 	private JLabel textLabel;
 	private JTextField textField;
 	private JButton button;
 	private JPanel panel;
 	private JPanel basicPanel;
-	
-//	@Override
-//	public void setVisible(boolean b) {
-//		// TODO Auto-generated method stub
-//		super.setVisible(b);
-//	}
+	private static final int DEFAULT_WIDTH = 1280;
+	private static final int DEFAULT_HEIGHT = 720;
 	
 	public BasicFrame() {
 		setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
-		
+		setTitle("주차장관리프로그램 Ver1.0.0");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
-	
+
 	public JPanel makeBasicPanel() {
 		basicPanel = new JPanel();
+		basicPanel.setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
 		basicPanel.setLayout(new GridLayout(3, 1));
 		return basicPanel;
 	}
