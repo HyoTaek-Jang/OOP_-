@@ -63,6 +63,7 @@ public class MainFrame extends BasicFrame {
 	public void moveFrame(String input) {
 		switch (input) {
 		case "1":
+			entryFrame.paintedMainPanel();
 			entryFrame.setVisible(true);
 		}
 	}
