@@ -71,6 +71,12 @@ public class ParkingLot {
 	public int checkParkingLot(String carNum) {
 		return keyOfParkingLot.indexOf(carNum);
 	}
+	
+	public int checkParkingTime(String carNum ,Date exitDate) throws ParseException {
+		int indexOfCar = keyOfParkingLot.indexOf(carNum);
+		Car curCar = currentParkingLot.get(indexOfCar);
+		return (int) curCar.calculateParkingTime(exitDate);
+	}
 
 	public String calExitInformation(int standardTime, int parkingFee) {
 		int hour = 0, min = 0;

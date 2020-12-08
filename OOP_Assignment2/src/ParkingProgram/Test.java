@@ -27,6 +27,10 @@ public class Test {
 	public static int checkParkingLot(String carNum) {
 		return parkingLot.checkParkingLot(carNum);
 	}
+	
+	public static int checkPakingTime(String carNum, Date exitDate) throws ParseException {
+		return parkingLot.checkParkingTime(carNum, exitDate);
+	}
 
 	public static String runExit(String carNum, Date exitDate) {
 		String exitValue = null;

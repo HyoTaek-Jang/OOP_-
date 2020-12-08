@@ -51,8 +51,15 @@ public class ExitFrame extends BasicFrame {
 		contentPanel.removeAll();
 		inputPanel.removeAll();
 		boxPanel.removeAll();
-
+		JPanel titleButtonPanel = new JPanel();
+		
 		titlePanel.add(makeLabel("주차장 관리 프로그램 Ver1.0.0", 50));
+		titleButtonPanel.add(makeButton("초기화면", 25, new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+			}}));
+		titlePanel.add(titleButtonPanel, BorderLayout.SOUTH);
 
 		contentPanel.add(makeLabel("2번 출차 기능이 실행됐습니다.", 35));
 
@@ -150,13 +157,16 @@ public class ExitFrame extends BasicFrame {
 				dateFormat.setLenient(false);
 				try {
 					entryDate = dateFormat.parse(entryTime);
+					if (Test.checkPakingTime(carNum, entryDate) < 0)
+						throw new ArithmeticException("오류 : 출차시간이 입차시간보다 빠릅니다.");
 					paintedCheckPanel();
 				} catch (ParseException e1) {
 					alertLabel.setText("오류 : 날짜 입력이 올바르지 않습니다.");
 					infoDialog.setVisible(true);
-					e1.printStackTrace();
+				} catch (ArithmeticException e1) {
+					alertLabel.setText("오류 : 출차시간이 입차시간보다 빠릅니다.");
+					infoDialog.setVisible(true);
 				}
-				// 출차시간 역전될때 익셉션
 			}
 		});
 		boxPanel.add(inputField);
@@ -167,11 +177,15 @@ public class ExitFrame extends BasicFrame {
 				dateFormat.setLenient(false);
 				try {
 					entryDate = dateFormat.parse(entryTime);
+					if (Test.checkPakingTime(carNum, entryDate) < 0)
+						throw new ArithmeticException("오류 : 출차시간이 입차시간보다 빠릅니다.");
 					paintedCheckPanel();
 				} catch (ParseException e1) {
 					alertLabel.setText("오류 : 날짜 입력이 올바르지 않습니다.");
 					infoDialog.setVisible(true);
-					e1.printStackTrace();
+				} catch (ArithmeticException e1) {
+					alertLabel.setText("오류 : 출차시간이 입차시간보다 빠릅니다.");
+					infoDialog.setVisible(true);
 				}
 			}
 		}));
@@ -200,12 +214,6 @@ public class ExitFrame extends BasicFrame {
 		contentPanel.add(makeLabel("주차요금은 " + processedValue[2] + "원입니다.", 35));
 		inputPanel.add(makeLabel("출차가 완료되었습니다.", 25));
 
-		inputPanel.add(makeButton("초기화면", 25, new ActionListener() {
-
-			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
-			}
-		}));
 
 		exitMainPanel.add(contentPanel);
 		exitMainPanel.add(inputPanel);

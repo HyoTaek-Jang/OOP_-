@@ -56,7 +56,15 @@ public class EntryFrame extends BasicFrame {
 
 		JPanel boxPanel = new JPanel();
 
+		JPanel titleButtonPanel = new JPanel();
+		
 		titlePanel.add(makeLabel("주차장 관리 프로그램 Ver1.0.0", 50));
+		titleButtonPanel.add(makeButton("초기화면", 25, new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+			}}));
+		titlePanel.add(titleButtonPanel, BorderLayout.SOUTH);
 
 		contentPanel.add(makeLabel("1번 입차 기능이 실행됐습니다.", 35));
 
@@ -166,7 +174,7 @@ public class EntryFrame extends BasicFrame {
 
 					paintedTimePanel(carNum);
 
-				} catch (InputMismatchException e) {
+				} catch (InputMismatchException e1) {
 					alertLabel.setText("오류 : 차량 번호가 올바르지 않습니다");
 					infoDialog.setVisible(true);
 				}
@@ -190,12 +198,12 @@ public class EntryFrame extends BasicFrame {
 
 					paintedTimePanel(carNum);
 
-				} catch (InputMismatchException e) {
+				} catch (InputMismatchException e1) {
 					alertLabel.setText("오류 : 차량 번호가 올바르지 않습니다");
 					infoDialog.setVisible(true);
 				}
 			}
-		});
+		}));
 
 		inputPanel.add(boxPanel);
 		exitMainPanel.add(inputPanel);
@@ -268,13 +276,6 @@ public class EntryFrame extends BasicFrame {
 		contentPanel.add(makeLabel("입차정보 : " + curCar + "입니다.", 35));
 
 		inputPanel.add(makeLabel("입차가 완료되었습니다.", 25));
-
-		inputPanel.add(makeButton("초기화면", 25, new ActionListener() {
-
-			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
-			}
-		}));
 
 		exitMainPanel.add(inputPanel);
 
