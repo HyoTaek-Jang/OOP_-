@@ -4,6 +4,7 @@ import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.Scanner;
 
 public class ParkingLot {
@@ -23,15 +24,17 @@ public class ParkingLot {
 		System.out.println("주차장은 최대 " + parkingLotSize + "대 주차 가능합니다.");
 	}
 
-	public void entryCar() throws ParseException {
+	public Car entryCar(String carInfo, String carNum, Date entryDate) throws ParseException{
 		if (!(parkingLotSize > currentParkingLot.size()))
 			throw new IndexOutOfBoundsException("오류 : 주차장에 자리가 없습니다.");
 
-		Car curCar = createCar.create();
+		Car curCar = createCar.create(carInfo, carNum, entryDate);
 
 		currentParkingLot.add(curCar);
 		keyOfParkingLot.add(curCar.getCarNumber());
 		System.out.println("입차가 완료됐습니다.");
+		
+		return curCar;
 	}
 
 	public void exitCar() throws ParseException {

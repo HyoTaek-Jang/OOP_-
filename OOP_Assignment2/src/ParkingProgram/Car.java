@@ -23,7 +23,7 @@ public abstract class Car implements Comparable<Car> {
 
 	public abstract int calculateStandardTime();
 
-	public Car(String kindOfCar, String carNumber, String entryTime) throws ParseException {
+	public Car(String kindOfCar, String carNumber, Date entryTime) throws ParseException {
 		switch (kindOfCar) {
 		case "c":
 			this.kindOfCar = kindsOfCar.승용차;
@@ -37,9 +37,8 @@ public abstract class Car implements Comparable<Car> {
 		}
 
 		this.carNumber = carNumber;
-		
-		dateFormat.setLenient(false); // 양식에 다른 입력을 받으면 Exception 발생.
-		entryDate = dateFormat.parse(entryTime);
+
+		this.entryDate = entryTime;
 
 	}
 

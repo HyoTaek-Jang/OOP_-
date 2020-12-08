@@ -1,13 +1,14 @@
 package ParkingProgram;
 
 import java.text.ParseException;
+import java.util.Date;
 
 public class PassengerCar extends Car {
 
 	private int standardParkingTime;
 	private int parkingFee = 0;
 
-	public PassengerCar(String kindOfCar, String carNumber, String entryTime) throws ParseException {
+	public PassengerCar(String kindOfCar, String carNumber, Date entryTime) throws ParseException {
 		super(kindOfCar, carNumber, entryTime);
 	}
 

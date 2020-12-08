@@ -1,6 +1,7 @@
 package ParkingProgram;
 
 import java.text.ParseException;
+import java.util.Date;
 
 public class Bus extends Car {
 
@@ -12,7 +13,7 @@ public class Bus extends Car {
 		대형, 중형, 소형
 	}
 
-	public Bus(int capacity, String kindOfCar, String carNumber, String entryTime) throws ParseException {
+	public Bus(int capacity, String kindOfCar, String carNumber, Date entryTime) throws ParseException {
 		super(kindOfCar, carNumber, entryTime);
 
 		if (capacity < 24)

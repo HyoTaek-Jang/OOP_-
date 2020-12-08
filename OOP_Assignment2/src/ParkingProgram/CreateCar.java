@@ -1,30 +1,18 @@
 package ParkingProgram;
 
 import java.text.ParseException;
+import java.util.Date;
 import java.util.InputMismatchException;
-import java.util.Scanner;
 
 public class CreateCar {
 
-	private String carNumber;
-	private String entryTime;
-	private String awnser;
-	Scanner scanner = new Scanner(System.in);
+	public Car create(String carInfo, String carNumber, Date entryTime) throws ParseException{
 
-	public Car create() throws ParseException{
-		System.out.println("차량 종류 및 용량을 입력하세요! 승용차(c), 트럭(t), 버스(b)");
-		awnser = scanner.nextLine();
-		String processedAwnser[] = awnser.split(" ");
+		String processedAwnser[] = carInfo.split(" ");
 
 		String kindOfCar = processedAwnser[0];
 		int capacity = Integer.parseInt(processedAwnser[1]);
 
-		if (!((kindOfCar.equals("c") || kindOfCar.equals("b") || kindOfCar.equals("t"))&& (capacity > 0 || capacity == 0))) {
-			throw new InputMismatchException("오류 : 차량 종류 및 용량이 옳지 않습니다.");
-		} 
-
-		System.out.println("차량 번호를 입력하세요!(4자리 숫자)");
-		carNumber = scanner.nextLine();
 		
 		if (carNumber.length() != 4)
 			throw new InputMismatchException("오류 : 차량 번호가 올바르지 않습니다");
@@ -34,8 +22,6 @@ public class CreateCar {
 				throw new InputMismatchException("오류 : 차량 번호가 올바르지 않습니다");
 		}
 
-		System.out.println("입차시간을 입력하세요! (년 월 일 시 분)");
-		entryTime = scanner.nextLine();
 
 		switch (kindOfCar) {
 		case "c":

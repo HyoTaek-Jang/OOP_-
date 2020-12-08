@@ -1,9 +1,9 @@
 package ParkingLotProg_GUI;
 
-import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -47,11 +47,6 @@ public class MainFrame extends BasicFrame {
 		}));
 		inputPanel.add(boxPanel);
 
-		inputPanel.setBackground(Color.CYAN);
-		boxPanel.setBackground(Color.DARK_GRAY);
-		contentPanel.setBackground(Color.BLUE);
-		titlePanel.setBackground(Color.BLACK);
-
 		add(titlePanel);
 		add(contentPanel);
 		add(inputPanel);
@@ -63,7 +58,8 @@ public class MainFrame extends BasicFrame {
 	public void moveFrame(String input) {
 		switch (input) {
 		case "1":
-			entryFrame.paintedMainPanel();
+				entryFrame.paintedMainPanel();
+
 			entryFrame.setVisible(true);
 		}
 	}
