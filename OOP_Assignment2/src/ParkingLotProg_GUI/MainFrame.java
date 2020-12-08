@@ -10,6 +10,8 @@ import javax.swing.JTextField;
 public class MainFrame extends BasicFrame {
 
 	private EntryFrame entryFrame = new EntryFrame();
+	private ExitFrame exitFrame = new ExitFrame();
+	JTextField inputField;
 
 	public MainFrame() {
 		super();
@@ -28,7 +30,7 @@ public class MainFrame extends BasicFrame {
 		boxPanel_2.add(makeLabel("최대 30대까지 수용 가능한 주차장입니다.", 20));
 		contentPanel.add(boxPanel_2);
 
-		JTextField inputField = makeTextField("ex) 1", 5, 35, new ActionListener() {
+		inputField = makeTextField("Ex) 1", 5, 35, new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
 				JTextField t = (JTextField) e.getSource();
@@ -58,9 +60,15 @@ public class MainFrame extends BasicFrame {
 	public void moveFrame(String input) {
 		switch (input) {
 		case "1":
-				entryFrame.paintedMainPanel();
-
+			inputField.setText("Ex) 1");
+			entryFrame.paintedMainPanel();
 			entryFrame.setVisible(true);
+			break;
+		case "2":
+			inputField.setText("Ex) 1");
+			exitFrame.paintedCarNumPanel();
+			exitFrame.setVisible(true);
+			break;
 		}
 	}
 

@@ -20,23 +20,29 @@ public class Test {
 			System.out.printf("%nException: %s%n", parseException);
 			System.out.println("오류 : 날짜 형식에 맞지 않은 입력 값입니다.");
 		}
-		
+
 		return curCar;
 	}
-//
-//			case 2:
-//				try {
-//					parkingLot.exitCar();
-//				} catch (ParseException parseException) {
-//					System.out.printf("%nException: %s%n", parseException);
-//					System.out.println("오류 : 날짜 형식에 맞지 않은 입력 값입니다.");
-//				} catch (IllegalArgumentException illegalArgumentException) {
-//					System.out.printf("%nException: %s%n", illegalArgumentException);
-//				} catch (ArithmeticException arithmeticException) {
-//					System.out.printf("%nException: %s%n", arithmeticException);
-//				}
-//				break;
-//
+	
+	public static int checkParkingLot(String carNum) {
+		return parkingLot.checkParkingLot(carNum);
+	}
+
+	public static String runExit(String carNum, Date exitDate) {
+		String exitValue = null;
+		try {
+			exitValue = parkingLot.exitCar(carNum, exitDate);
+		} catch (ParseException parseException) {
+			System.out.printf("%nException: %s%n", parseException);
+			System.out.println("오류 : 날짜 형식에 맞지 않은 입력 값입니다.");
+		} catch (IllegalArgumentException illegalArgumentException) {
+			System.out.printf("%nException: %s%n", illegalArgumentException);
+		} catch (ArithmeticException arithmeticException) {
+			System.out.printf("%nException: %s%n", arithmeticException);
+		}
+		return exitValue;
+	}
+
 //			case 3:
 //				parkingLot.showParkingLot();
 //				break;

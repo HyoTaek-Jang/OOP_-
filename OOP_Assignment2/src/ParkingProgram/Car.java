@@ -42,12 +42,8 @@ public abstract class Car implements Comparable<Car> {
 
 	}
 
-	public long calculateParkingTime() throws ParseException {
-		Date exitDate = null;
+	public long calculateParkingTime(Date exitDate) throws ParseException {
 
-		System.out.println("출차시간을 입력하세요!");
-		dateFormat.setLenient(false);
-		exitDate = dateFormat.parse(scanner.nextLine());
 
 		parkingTime = (exitDate.getTime() - entryDate.getTime()) / 60 / 1000; // 차이를 분으로 만듬.
 

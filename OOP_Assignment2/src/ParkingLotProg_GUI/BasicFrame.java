@@ -1,6 +1,7 @@
 package ParkingLotProg_GUI;
 
 import java.awt.BorderLayout;
+import java.awt.Dialog;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
@@ -18,6 +19,7 @@ public class BasicFrame extends JFrame {
 	private JButton button;
 	private JPanel panel;
 	private JPanel basicPanel;
+	private Dialog dialog;
 	private static final int DEFAULT_WIDTH = 1280;
 	private static final int DEFAULT_HEIGHT = 720;
 	
@@ -64,4 +66,10 @@ public class BasicFrame extends JFrame {
 		return panel;
 	}
 
+	public Dialog makeDialog() {
+		dialog = new Dialog(this, "Information", true);
+		dialog.setLayout(new BorderLayout());
+		dialog.setSize(400,150);
+		return dialog;
+	}
 }

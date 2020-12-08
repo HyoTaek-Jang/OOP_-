@@ -37,20 +37,18 @@ public class ParkingLot {
 		return curCar;
 	}
 
-	public void exitCar() throws ParseException {
+	public String exitCar(String carNum, Date exitDate) throws ParseException {
 		int totalFee = 0;
 		long parkingTime;
 		int standardParkingTime;
 
-		System.out.println("출차할 차량번호를 입력하세요!");
-		String searchCarNumber = scanner.nextLine();
 
-		int indexOfCar = keyOfParkingLot.indexOf(searchCarNumber);
+		int indexOfCar = keyOfParkingLot.indexOf(carNum);
 		if (indexOfCar == -1)
 			throw new IllegalArgumentException("오류 : 출차번호가 존재하지 않습니다.");
 		Car curCar = currentParkingLot.get(indexOfCar);
 
-		parkingTime = curCar.calculateParkingTime();
+		parkingTime = curCar.calculateParkingTime(exitDate);
 		standardParkingTime = curCar.calculateStandardTime();
 
 		if (curCar.getClass().getName().equals("ParkingProgram.ElectronicPassengerCar")) {
@@ -61,13 +59,20 @@ public class ParkingLot {
 		}
 
 		addIncome(totalFee);
-		printExitInformation(standardParkingTime, totalFee);
 
 		keyOfParkingLot.remove(indexOfCar);
 		currentParkingLot.remove(indexOfCar);
+		
+		System.out.println("출차가 완료됐습니다.");
+
+		return calExitInformation(standardParkingTime, totalFee);
+	}
+	
+	public int checkParkingLot(String carNum) {
+		return keyOfParkingLot.indexOf(carNum);
 	}
 
-	public void printExitInformation(int standardTime, int parkingFee) {
+	public String calExitInformation(int standardTime, int parkingFee) {
 		int hour = 0, min = 0;
 
 		if (standardTime / 60 != 0)
@@ -76,6 +81,8 @@ public class ParkingLot {
 
 		System.out.println("주차시간은 " + hour + "시간 " + min + "분입니다.");
 		System.out.println("주차요금은 " + priceFormat.format(parkingFee) + "원입니다.");
+		
+		return hour+" "+min+" "+priceFormat.format(parkingFee);
 	}
 
 	public void showParkingLot() {
