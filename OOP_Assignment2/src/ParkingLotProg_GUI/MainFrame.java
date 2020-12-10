@@ -11,7 +11,8 @@ public class MainFrame extends BasicFrame {
 
 	private EntryFrame entryFrame = new EntryFrame();
 	private ExitFrame exitFrame = new ExitFrame();
-	JTextField inputField;
+	private ShowPakingLotFrame showParkingLotFrame = new ShowPakingLotFrame();
+	private JTextField inputField;
 
 	public MainFrame() {
 		super();
@@ -68,6 +69,11 @@ public class MainFrame extends BasicFrame {
 			inputField.setText("Ex) 1");
 			exitFrame.paintedCarNumPanel();
 			exitFrame.setVisible(true);
+			break;
+		case "3":
+			inputField.setText("Ex) 1");
+			showParkingLotFrame.paintedParkingLotPanel();
+			showParkingLotFrame.setVisible(true);
 			break;
 		}
 	}

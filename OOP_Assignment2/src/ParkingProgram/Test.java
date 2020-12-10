@@ -1,6 +1,8 @@
 package ParkingProgram;
 
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.InputMismatchException;
 
@@ -23,11 +25,11 @@ public class Test {
 
 		return curCar;
 	}
-	
+
 	public static int checkParkingLot(String carNum) {
 		return parkingLot.checkParkingLot(carNum);
 	}
-	
+
 	public static int checkPakingTime(String carNum, Date exitDate) throws ParseException {
 		return parkingLot.checkParkingTime(carNum, exitDate);
 	}
@@ -46,6 +48,11 @@ public class Test {
 		}
 		return exitValue;
 	}
+
+	public static ArrayList<Car> getCloneParkingLot() {
+		return parkingLot.showParkingLot();
+	}
+
 
 //			case 3:
 //				parkingLot.showParkingLot();

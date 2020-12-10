@@ -9,6 +9,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.InputMismatchException;
+
+import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -17,7 +19,7 @@ import ParkingProgram.Test;
 
 public class ExitFrame extends BasicFrame {
 
-	private JPanel exitMainPanel = makeBasicPanel();
+	private JPanel showPakingLotMainPanel = makeBasicPanel();
 
 	private JPanel titlePanel = makePanel();
 	private JPanel contentPanel = makePanel();
@@ -46,7 +48,7 @@ public class ExitFrame extends BasicFrame {
 
 	public void paintedCarNumPanel() {
 
-		exitMainPanel.removeAll();
+		showPakingLotMainPanel.removeAll();
 		titlePanel.removeAll();
 		contentPanel.removeAll();
 		inputPanel.removeAll();
@@ -129,12 +131,12 @@ public class ExitFrame extends BasicFrame {
 		}));
 
 		inputPanel.add(boxPanel);
-		exitMainPanel.add(titlePanel);
-		exitMainPanel.add(contentPanel);
-		exitMainPanel.add(inputPanel);
+		showPakingLotMainPanel.add(titlePanel);
+		showPakingLotMainPanel.add(contentPanel);
+		showPakingLotMainPanel.add(inputPanel);
 
 		getContentPane().removeAll();
-		getContentPane().add(exitMainPanel);
+		getContentPane().add(showPakingLotMainPanel);
 		revalidate();
 		repaint();
 	}
@@ -191,11 +193,11 @@ public class ExitFrame extends BasicFrame {
 		}));
 
 		inputPanel.add(boxPanel);
-		exitMainPanel.add(contentPanel);
-		exitMainPanel.add(inputPanel);
+		showPakingLotMainPanel.add(contentPanel);
+		showPakingLotMainPanel.add(inputPanel);
 
 		getContentPane().removeAll();
-		getContentPane().add(exitMainPanel);
+		getContentPane().add(showPakingLotMainPanel);
 		revalidate();
 		repaint();
 	}
@@ -210,16 +212,17 @@ public class ExitFrame extends BasicFrame {
 		String exitValue = Test.runExit(carNum, entryDate);
 		String processedValue[] = exitValue.split(" ");
 
+		contentPanel.setBorder(BorderFactory.createEmptyBorder(90 , 30, 30, 30));
 		contentPanel.add(makeLabel("주차시간은 " + processedValue[0] + "시간 " + processedValue[1] + "분입니다.", 35));
 		contentPanel.add(makeLabel("주차요금은 " + processedValue[2] + "원입니다.", 35));
 		inputPanel.add(makeLabel("출차가 완료되었습니다.", 25));
 
 
-		exitMainPanel.add(contentPanel);
-		exitMainPanel.add(inputPanel);
+		showPakingLotMainPanel.add(contentPanel);
+		showPakingLotMainPanel.add(inputPanel);
 
 		getContentPane().removeAll();
-		getContentPane().add(exitMainPanel);
+		getContentPane().add(showPakingLotMainPanel);
 		revalidate();
 		repaint();
 	}

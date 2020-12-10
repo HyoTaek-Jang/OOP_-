@@ -19,7 +19,7 @@ import ParkingProgram.Test;
 
 public class EntryFrame extends BasicFrame {
 
-	private JPanel exitMainPanel = makeBasicPanel();
+	private JPanel showPakingLotMainPanel = makeBasicPanel();
 
 	private JPanel titlePanel = makePanel();
 	private JPanel contentPanel = makePanel();
@@ -49,7 +49,7 @@ public class EntryFrame extends BasicFrame {
 
 	public void paintedMainPanel() {
 
-		exitMainPanel.removeAll();
+		showPakingLotMainPanel.removeAll();
 		titlePanel.removeAll();
 		contentPanel.removeAll();
 		inputPanel.removeAll();
@@ -123,12 +123,12 @@ public class EntryFrame extends BasicFrame {
 		}));
 
 		inputPanel.add(boxPanel);
-		exitMainPanel.add(titlePanel);
-		exitMainPanel.add(contentPanel);
-		exitMainPanel.add(inputPanel);
+		showPakingLotMainPanel.add(titlePanel);
+		showPakingLotMainPanel.add(contentPanel);
+		showPakingLotMainPanel.add(inputPanel);
 
 		getContentPane().removeAll();
-		getContentPane().add(exitMainPanel);
+		getContentPane().add(showPakingLotMainPanel);
 		revalidate();
 		repaint();
 	}
@@ -206,10 +206,10 @@ public class EntryFrame extends BasicFrame {
 		}));
 
 		inputPanel.add(boxPanel);
-		exitMainPanel.add(inputPanel);
+		showPakingLotMainPanel.add(inputPanel);
 
 		getContentPane().removeAll();
-		getContentPane().add(exitMainPanel);
+		getContentPane().add(showPakingLotMainPanel);
 		revalidate();
 		repaint();
 	}
@@ -258,10 +258,10 @@ public class EntryFrame extends BasicFrame {
 		}));
 
 		inputPanel.add(boxPanel);
-		exitMainPanel.add(inputPanel);
+		showPakingLotMainPanel.add(inputPanel);
 
 		getContentPane().removeAll();
-		getContentPane().add(exitMainPanel);
+		getContentPane().add(showPakingLotMainPanel);
 		revalidate();
 		repaint();
 	}
@@ -277,10 +277,10 @@ public class EntryFrame extends BasicFrame {
 
 		inputPanel.add(makeLabel("입차가 완료되었습니다.", 25));
 
-		exitMainPanel.add(inputPanel);
+		showPakingLotMainPanel.add(inputPanel);
 
 		getContentPane().removeAll();
-		getContentPane().add(exitMainPanel);
+		getContentPane().add(showPakingLotMainPanel);
 		revalidate();
 		repaint();
 	}

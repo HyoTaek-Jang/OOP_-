@@ -91,16 +91,10 @@ public class ParkingLot {
 		return hour+" "+min+" "+priceFormat.format(parkingFee);
 	}
 
-	public void showParkingLot() {
+	public ArrayList<Car> showParkingLot() {
 		ArrayList<Car> cloneParkingLot = (ArrayList<Car>) currentParkingLot.clone();
 
-		if (!cloneParkingLot.isEmpty()) {
-			Collections.sort(cloneParkingLot);
-			for (Car c : cloneParkingLot) {
-				System.out.println(c);
-			}
-		} else
-			System.out.println("주차장이 비어있습니다.");
+		return cloneParkingLot;
 	}
 
 	public void addIncome(int parkingFee) {
