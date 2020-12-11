@@ -48,13 +48,18 @@ public class MainFrame extends BasicFrame {
 				moveFrame(input);
 			}
 		}));
-		inputPanel.add(boxPanel);
+		
 
+		inputPanel.add(boxPanel);
+		
 		add(titlePanel);
 		add(contentPanel);
 		add(inputPanel);
-
+		
 		setVisible(true);
+		
+		inputField.selectAll();
+		
 
 	}
 

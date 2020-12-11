@@ -48,8 +48,9 @@ public class ShowPakingLotFrame extends BasicFrame{
 		titlePanel.removeAll();
 		contentPanel.removeAll();
 		JPanel titleButtonPanel = new JPanel();
+		titleButtonPanel.setBorder(BorderFactory.createEmptyBorder(30 , 30, 30, 30));
 		
-		titlePanel.add(makeLabel("주차장 관리 프로그램 Ver1.0.0", 50));
+		titlePanel.add(makeLabel("현재 주차장 보기 기능", 50));
 		titleButtonPanel.add(makeButton("초기화면", 25, new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
@@ -66,7 +67,9 @@ public class ShowPakingLotFrame extends BasicFrame{
 				contentPanel.add(makeCarBlock(c));
 			}
 		} else
-			System.out.println("주차장이 비어있습니다.");
+		{
+			contentPanel.add(makeLabel("주차장이 비어있습니다.", 30));
+		}
 
 
 		showPakingLotMainPanel.add(titlePanel,BorderLayout.NORTH);

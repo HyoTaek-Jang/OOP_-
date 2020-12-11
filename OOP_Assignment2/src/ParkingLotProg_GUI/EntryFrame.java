@@ -34,7 +34,7 @@ public class EntryFrame extends BasicFrame {
 
 	public EntryFrame() {
 		super();
-//		paintedMainPanel();
+
 		infoDialog = makeDialog();
 		infoDialog.add(alertLabel);
 		JPanel buttonPanel = new JPanel();
@@ -76,8 +76,8 @@ public class EntryFrame extends BasicFrame {
 			public void actionPerformed(ActionEvent e) {
 				String kindOfCar = null;
 				int capacity = 0;
+				JTextField field = (JTextField) e.getSource();
 				try {
-					JTextField field = (JTextField) e.getSource();
 					carInfo = field.getText();
 
 					String processedAwnser[] = carInfo.split(" ");
@@ -92,6 +92,8 @@ public class EntryFrame extends BasicFrame {
 				} catch (Exception e1) {
 					alertLabel.setText("오류 : 차량 종류 및 용량이 옳지 않습니다.");
 					infoDialog.setVisible(true);
+					field.requestFocus();
+					field.selectAll();
 				}
 
 			}
@@ -117,10 +119,13 @@ public class EntryFrame extends BasicFrame {
 				} catch (Exception e1) {
 					alertLabel.setText("오류 : 차량 종류 및 용량이 옳지 않습니다.");
 					infoDialog.setVisible(true);
+					inputField.requestFocus();
+					inputField.selectAll();
 				}
 
 			}
 		}));
+		
 
 		inputPanel.add(boxPanel);
 		showPakingLotMainPanel.add(titlePanel);
@@ -131,6 +136,10 @@ public class EntryFrame extends BasicFrame {
 		getContentPane().add(showPakingLotMainPanel);
 		revalidate();
 		repaint();
+
+		setVisible(true);
+		inputField.requestFocus();
+		inputField.selectAll();
 	}
 
 	public void paintedCarNumPanel(String kindOfCar, int capacity) {
@@ -159,8 +168,8 @@ public class EntryFrame extends BasicFrame {
 		JTextField inputField = makeTextField("Ex) 1234", 5, 25, new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
+				JTextField t = (JTextField) e.getSource();
 				try {
-					JTextField t = (JTextField) e.getSource();
 					carNum = t.getText();
 					if (carNum.length() != 4) {
 						throw new InputMismatchException("오류 : 차량 번호가 올바르지 않습니다");
@@ -177,6 +186,8 @@ public class EntryFrame extends BasicFrame {
 				} catch (InputMismatchException e1) {
 					alertLabel.setText("오류 : 차량 번호가 올바르지 않습니다");
 					infoDialog.setVisible(true);
+					t.requestFocus();
+					t.selectAll();
 				}
 			}
 		});
@@ -201,6 +212,8 @@ public class EntryFrame extends BasicFrame {
 				} catch (InputMismatchException e1) {
 					alertLabel.setText("오류 : 차량 번호가 올바르지 않습니다");
 					infoDialog.setVisible(true);
+					inputField.requestFocus();
+					inputField.selectAll();
 				}
 			}
 		}));
@@ -212,6 +225,9 @@ public class EntryFrame extends BasicFrame {
 		getContentPane().add(showPakingLotMainPanel);
 		revalidate();
 		repaint();
+
+		inputField.requestFocus();
+		inputField.selectAll();
 	}
 
 	public void paintedTimePanel(String input) {
@@ -236,7 +252,8 @@ public class EntryFrame extends BasicFrame {
 				} catch (ParseException e1) {
 					alertLabel.setText("오류 : 날짜 입력이 올바르지 않습니다.");
 					infoDialog.setVisible(true);
-					e1.printStackTrace();
+					t.requestFocus();
+					t.selectAll();
 				}
 			}
 		});
@@ -252,10 +269,12 @@ public class EntryFrame extends BasicFrame {
 				} catch (ParseException e1) {
 					alertLabel.setText("오류 : 날짜 입력이 올바르지 않습니다.");
 					infoDialog.setVisible(true);
-					e1.printStackTrace();
+					inputField.requestFocus();
+					inputField.selectAll();
 				}
 			}
 		}));
+
 
 		inputPanel.add(boxPanel);
 		showPakingLotMainPanel.add(inputPanel);
@@ -264,6 +283,10 @@ public class EntryFrame extends BasicFrame {
 		getContentPane().add(showPakingLotMainPanel);
 		revalidate();
 		repaint();
+		
+
+		inputField.requestFocus();
+		inputField.selectAll();
 	}
 
 	public void paintedCheckPanel() {

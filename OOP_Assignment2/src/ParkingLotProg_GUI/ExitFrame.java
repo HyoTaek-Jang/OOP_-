@@ -39,7 +39,8 @@ public class ExitFrame extends BasicFrame {
 		JPanel buttonPanel = new JPanel();
 		buttonPanel.add(makeButton("확인", 15, new ActionListener() {
 			@Override
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e) 
+			{
 				infoDialog.setVisible(false);
 			}
 		}));
@@ -72,8 +73,8 @@ public class ExitFrame extends BasicFrame {
 
 			public void actionPerformed(ActionEvent e) {
 
+				JTextField t = (JTextField) e.getSource();
 				try {
-					JTextField t = (JTextField) e.getSource();
 					carNum = t.getText();
 
 					if (carNum.length() != 4) {
@@ -93,9 +94,13 @@ public class ExitFrame extends BasicFrame {
 				} catch (InputMismatchException e1) {
 					alertLabel.setText("오류 : 차량 번호가 올바르지 않습니다");
 					infoDialog.setVisible(true);
+					t.requestFocus();
+					t.selectAll();
 				} catch (IllegalArgumentException e1) {
 					alertLabel.setText("오류 : 입력한 차량이 주차장에 존재하지 않습니다.");
 					infoDialog.setVisible(true);
+					t.requestFocus();
+					t.selectAll();
 				}
 			}
 		});
@@ -123,12 +128,17 @@ public class ExitFrame extends BasicFrame {
 				} catch (InputMismatchException e1) {
 					alertLabel.setText("오류 : 차량 번호가 올바르지 않습니다");
 					infoDialog.setVisible(true);
+					inputField.requestFocus();
+					inputField.selectAll();
 				} catch (IllegalArgumentException e1) {
 					alertLabel.setText("오류 : 입력한 차량이 주차장에 존재하지 않습니다.");
 					infoDialog.setVisible(true);
+					inputField.requestFocus();
+					inputField.selectAll();
 				}
 			}
 		}));
+		
 
 		inputPanel.add(boxPanel);
 		showPakingLotMainPanel.add(titlePanel);
@@ -139,6 +149,10 @@ public class ExitFrame extends BasicFrame {
 		getContentPane().add(showPakingLotMainPanel);
 		revalidate();
 		repaint();
+		
+		setVisible(true);
+		inputField.requestFocus();
+		inputField.selectAll();
 	}
 
 	public void paintedDatePanel(String carNum) {
@@ -165,9 +179,13 @@ public class ExitFrame extends BasicFrame {
 				} catch (ParseException e1) {
 					alertLabel.setText("오류 : 날짜 입력이 올바르지 않습니다.");
 					infoDialog.setVisible(true);
+					t.requestFocus();
+					t.selectAll();
 				} catch (ArithmeticException e1) {
 					alertLabel.setText("오류 : 출차시간이 입차시간보다 빠릅니다.");
 					infoDialog.setVisible(true);
+					t.requestFocus();
+					t.selectAll();
 				}
 			}
 		});
@@ -185,12 +203,19 @@ public class ExitFrame extends BasicFrame {
 				} catch (ParseException e1) {
 					alertLabel.setText("오류 : 날짜 입력이 올바르지 않습니다.");
 					infoDialog.setVisible(true);
+					inputField.requestFocus();
+					inputField.selectAll();
 				} catch (ArithmeticException e1) {
 					alertLabel.setText("오류 : 출차시간이 입차시간보다 빠릅니다.");
 					infoDialog.setVisible(true);
+					inputField.requestFocus();
+					inputField.selectAll();
 				}
 			}
 		}));
+		
+		inputField.requestFocus();
+		inputField.selectAll();
 
 		inputPanel.add(boxPanel);
 		showPakingLotMainPanel.add(contentPanel);
@@ -200,6 +225,9 @@ public class ExitFrame extends BasicFrame {
 		getContentPane().add(showPakingLotMainPanel);
 		revalidate();
 		repaint();
+		
+		inputField.requestFocus();
+		inputField.selectAll();
 	}
 
 	public void paintedCheckPanel() {
@@ -220,11 +248,13 @@ public class ExitFrame extends BasicFrame {
 
 		showPakingLotMainPanel.add(contentPanel);
 		showPakingLotMainPanel.add(inputPanel);
+		
 
 		getContentPane().removeAll();
 		getContentPane().add(showPakingLotMainPanel);
 		revalidate();
 		repaint();
+
 	}
 
 }
