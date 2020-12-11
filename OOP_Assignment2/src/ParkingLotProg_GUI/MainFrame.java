@@ -6,6 +6,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -16,7 +17,7 @@ public class MainFrame extends BasicFrame {
 	private ExitFrame exitFrame = new ExitFrame();
 	private ShowPakingLotFrame showParkingLotFrame = new ShowPakingLotFrame();
 	private ShowIncomeFrame showIncomeFrame = new ShowIncomeFrame();
-	
+
 	private JTextField inputField;
 	private Dialog infoDialog;
 	private JLabel alertLabel = makeLabel("", 15);
@@ -24,14 +25,13 @@ public class MainFrame extends BasicFrame {
 	public MainFrame() {
 		super();
 		setLayout(new GridLayout(3, 1));
-		
+
 		infoDialog = makeDialog();
 		infoDialog.add(alertLabel);
 		JPanel buttonPanel = new JPanel();
 		buttonPanel.add(makeButton("확인", 15, new ActionListener() {
 			@Override
-			public void actionPerformed(ActionEvent e) 
-			{
+			public void actionPerformed(ActionEvent e) {
 				infoDialog.setVisible(false);
 			}
 		}));
@@ -47,7 +47,12 @@ public class MainFrame extends BasicFrame {
 		titlePanel.add(makeLabel("주차장 관리 프로그램 Ver1.0.0", 50));
 
 		boxPanel_2.add(makeLabel("1.입차 / 2.출차 / 3.주차장보기 / 4.수입보기 / 5.프로그램 종료", 35));
-		boxPanel_2.add(makeLabel("최대 10대까지 수용 가능한 주차장입니다.", 20));
+		
+		JLabel maxSize = makeLabel("최대 10대까지 수용 가능한 주차장입니다.", 25);
+		maxSize.setBorder(BorderFactory.createEmptyBorder(60, 30, 30, 30));
+		
+		boxPanel_2.add(maxSize);
+		
 		contentPanel.add(boxPanel_2);
 
 		inputField = makeTextField("Ex) 1", 5, 35, new ActionListener() {
@@ -67,18 +72,16 @@ public class MainFrame extends BasicFrame {
 				moveFrame(input);
 			}
 		}));
-		
 
 		inputPanel.add(boxPanel);
-		
+
 		add(titlePanel);
 		add(contentPanel);
 		add(inputPanel);
-		
+
 		setVisible(true);
-		
+
 		inputField.selectAll();
-		
 
 	}
 

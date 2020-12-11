@@ -57,13 +57,14 @@ public class EntryFrame extends BasicFrame {
 		JPanel boxPanel = new JPanel();
 
 		JPanel titleButtonPanel = new JPanel();
-		
+
 		titlePanel.add(makeLabel("주차장 관리 프로그램 Ver1.0.0", 50));
 		titleButtonPanel.add(makeButton("초기화면", 25, new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-			}}));
+			}
+		}));
 		titlePanel.add(titleButtonPanel, BorderLayout.SOUTH);
 
 		contentPanel.add(makeLabel("1번 입차 기능이 실행됐습니다.", 35));
@@ -88,9 +89,16 @@ public class EntryFrame extends BasicFrame {
 							&& (capacity > 0 || capacity == 0))) {
 						throw new InputMismatchException("오류 : 차량 종류 및 용량이 옳지 않습니다.");
 					}
+					if (Test.currentParkingLot() > 9)
+						throw new IndexOutOfBoundsException("오류 : 주차장에 자리가 없습니다.");
 					paintedCarNumPanel(kindOfCar, capacity);
-				} catch (Exception e1) {
+				} catch (InputMismatchException e1) {
 					alertLabel.setText("오류 : 차량 종류 및 용량이 옳지 않습니다.");
+					infoDialog.setVisible(true);
+					field.requestFocus();
+					field.selectAll();
+				} catch (IndexOutOfBoundsException e1) {
+					alertLabel.setText("오류 : 주차장에 자리가 없습니다.");
 					infoDialog.setVisible(true);
 					field.requestFocus();
 					field.selectAll();
@@ -115,9 +123,16 @@ public class EntryFrame extends BasicFrame {
 							&& (capacity > 0 || capacity == 0))) {
 						throw new InputMismatchException("오류 : 차량 종류 및 용량이 옳지 않습니다.");
 					}
+					if (Test.currentParkingLot() > 9)
+						throw new IndexOutOfBoundsException("오류 : 주차장에 자리가 없습니다.");
 					paintedCarNumPanel(kindOfCar, capacity);
-				} catch (Exception e1) {
+				} catch (InputMismatchException e1) {
 					alertLabel.setText("오류 : 차량 종류 및 용량이 옳지 않습니다.");
+					infoDialog.setVisible(true);
+					inputField.requestFocus();
+					inputField.selectAll();
+				} catch (IndexOutOfBoundsException e1) {
+					alertLabel.setText("오류 : 주차장에 자리가 없습니다.");
 					infoDialog.setVisible(true);
 					inputField.requestFocus();
 					inputField.selectAll();
@@ -125,7 +140,6 @@ public class EntryFrame extends BasicFrame {
 
 			}
 		}));
-		
 
 		inputPanel.add(boxPanel);
 		showPakingLotMainPanel.add(titlePanel);
@@ -275,7 +289,6 @@ public class EntryFrame extends BasicFrame {
 			}
 		}));
 
-
 		inputPanel.add(boxPanel);
 		showPakingLotMainPanel.add(inputPanel);
 
@@ -283,7 +296,6 @@ public class EntryFrame extends BasicFrame {
 		getContentPane().add(showPakingLotMainPanel);
 		revalidate();
 		repaint();
-		
 
 		inputField.requestFocus();
 		inputField.selectAll();

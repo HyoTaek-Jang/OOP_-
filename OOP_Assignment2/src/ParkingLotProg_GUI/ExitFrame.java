@@ -39,8 +39,7 @@ public class ExitFrame extends BasicFrame {
 		JPanel buttonPanel = new JPanel();
 		buttonPanel.add(makeButton("확인", 15, new ActionListener() {
 			@Override
-			public void actionPerformed(ActionEvent e) 
-			{
+			public void actionPerformed(ActionEvent e) {
 				infoDialog.setVisible(false);
 			}
 		}));
@@ -55,13 +54,14 @@ public class ExitFrame extends BasicFrame {
 		inputPanel.removeAll();
 		boxPanel.removeAll();
 		JPanel titleButtonPanel = new JPanel();
-		
+
 		titlePanel.add(makeLabel("주차장 관리 프로그램 Ver1.0.0", 50));
 		titleButtonPanel.add(makeButton("초기화면", 25, new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-			}}));
+			}
+		}));
 		titlePanel.add(titleButtonPanel, BorderLayout.SOUTH);
 
 		contentPanel.add(makeLabel("2번 출차 기능이 실행됐습니다.", 35));
@@ -138,7 +138,6 @@ public class ExitFrame extends BasicFrame {
 				}
 			}
 		}));
-		
 
 		inputPanel.add(boxPanel);
 		showPakingLotMainPanel.add(titlePanel);
@@ -149,7 +148,7 @@ public class ExitFrame extends BasicFrame {
 		getContentPane().add(showPakingLotMainPanel);
 		revalidate();
 		repaint();
-		
+
 		setVisible(true);
 		inputField.requestFocus();
 		inputField.selectAll();
@@ -213,7 +212,7 @@ public class ExitFrame extends BasicFrame {
 				}
 			}
 		}));
-		
+
 		inputField.requestFocus();
 		inputField.selectAll();
 
@@ -225,7 +224,7 @@ public class ExitFrame extends BasicFrame {
 		getContentPane().add(showPakingLotMainPanel);
 		revalidate();
 		repaint();
-		
+
 		inputField.requestFocus();
 		inputField.selectAll();
 	}
@@ -240,15 +239,13 @@ public class ExitFrame extends BasicFrame {
 		String exitValue = Test.runExit(carNum, entryDate);
 		String processedValue[] = exitValue.split(" ");
 
-		contentPanel.setBorder(BorderFactory.createEmptyBorder(90 , 30, 30, 30));
+		contentPanel.setBorder(BorderFactory.createEmptyBorder(90, 30, 30, 30));
 		contentPanel.add(makeLabel("주차시간은 " + processedValue[0] + "시간 " + processedValue[1] + "분입니다.", 35));
 		contentPanel.add(makeLabel("주차요금은 " + processedValue[2] + "원입니다.", 35));
 		inputPanel.add(makeLabel("출차가 완료되었습니다.", 25));
 
-
 		showPakingLotMainPanel.add(contentPanel);
 		showPakingLotMainPanel.add(inputPanel);
-		
 
 		getContentPane().removeAll();
 		getContentPane().add(showPakingLotMainPanel);

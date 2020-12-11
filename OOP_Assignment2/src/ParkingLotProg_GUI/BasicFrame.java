@@ -25,8 +25,9 @@ public class BasicFrame extends JFrame {
 	
 	public BasicFrame() {
 		setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
-		setTitle("주차장관리프로그램 Ver1.0.0");
+		setTitle("주차장관리프로그램 Ver1.0.0_201721070 장효택");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setResizable(false);
 	}
 
 	public JPanel makeBasicPanel() {

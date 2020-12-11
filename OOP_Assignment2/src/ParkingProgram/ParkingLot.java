@@ -36,6 +36,10 @@ public class ParkingLot {
 		
 		return curCar;
 	}
+	
+	public int currentParkingLot() {
+		return currentParkingLot.size();
+	}
 
 	public String exitCar(String carNum, Date exitDate) throws ParseException {
 		int totalFee = 0;

@@ -52,12 +52,13 @@ public class Test {
 	public static ArrayList<Car> getCloneParkingLot() {
 		return parkingLot.showParkingLot();
 	}
-	
+
 	public static String showIncome() {
 		return parkingLot.showIncome();
 	}
-
-
-
+	
+	public static int currentParkingLot() {
+		return parkingLot.currentParkingLot();
+	}
 
 }
