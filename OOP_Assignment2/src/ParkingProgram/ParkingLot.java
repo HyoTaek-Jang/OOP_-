@@ -14,7 +14,7 @@ public class ParkingLot {
 	DecimalFormat priceFormat = new DecimalFormat("#,###");
 	Scanner scanner = new Scanner(System.in);
 	private int income;
-	private int parkingLotSize = 30;
+	private int parkingLotSize = 10;
 	private CreateCar createCar = new CreateCar();
 
 	public void setParkingLotSize() {
@@ -101,8 +101,8 @@ public class ParkingLot {
 		income += parkingFee;
 	}
 
-	public void showIncome() {
-		System.out.println("총 수입은 " + priceFormat.format(income) + "원입니다");
+	public String showIncome() {
+		return "총 수입은 " + priceFormat.format(income) + "원입니다";
 	}
 
 }

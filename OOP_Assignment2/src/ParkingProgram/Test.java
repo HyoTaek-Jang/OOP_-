@@ -52,20 +52,12 @@ public class Test {
 	public static ArrayList<Car> getCloneParkingLot() {
 		return parkingLot.showParkingLot();
 	}
+	
+	public static String showIncome() {
+		return parkingLot.showIncome();
+	}
 
 
-//			case 3:
-//				parkingLot.showParkingLot();
-//				break;
-//			case 4:
-//				parkingLot.showIncome();
-//				break;
-//			case 5:
-//				System.out.println("프로그램을 종료합니다.");
-//				System.exit(1);
-//			default:
-//				System.out.println("오류 : 메뉴에 존재하지 않는 번호입니다.");
-//			}
-//
+
 
 }
