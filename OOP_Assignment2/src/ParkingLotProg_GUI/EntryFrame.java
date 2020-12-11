@@ -85,8 +85,7 @@ public class EntryFrame extends BasicFrame {
 
 					kindOfCar = processedAwnser[0];
 					capacity = Integer.parseInt(processedAwnser[1]);
-					if (!((kindOfCar.equals("c") || kindOfCar.equals("b") || kindOfCar.equals("t"))
-							&& (capacity > 0 || capacity == 0))) {
+					if (!((kindOfCar.equals("c") || kindOfCar.equals("b") || kindOfCar.equals("t"))	&& (capacity > 0 || capacity == 0))) {
 						throw new InputMismatchException("오류 : 차량 종류 및 용량이 옳지 않습니다.");
 					}
 					if (Test.currentParkingLot() > 9)
@@ -119,8 +118,7 @@ public class EntryFrame extends BasicFrame {
 
 					kindOfCar = processedAwnser[0];
 					capacity = Integer.parseInt(processedAwnser[1]);
-					if (!((kindOfCar.equals("c") || kindOfCar.equals("b") || kindOfCar.equals("t"))
-							&& (capacity > 0 || capacity == 0))) {
+					if (!((kindOfCar.equals("c") || kindOfCar.equals("b") || kindOfCar.equals("t"))	&& (capacity > 0 || capacity == 0))) {
 						throw new InputMismatchException("오류 : 차량 종류 및 용량이 옳지 않습니다.");
 					}
 					if (Test.currentParkingLot() > 9)
